@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<title></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="/angular/LoginController.js"></script>
+  </head>
+  <body  ng-app="myFacebook" ng-controller="mycontroller">
+			<div class="main">
+						  <div class="row">
+						  				<div class="col-md-1">
+						  				</div>
+										<div class="col-md-2">
+										<br/>
+										 <center><b><font size="7">facebook</font></b></center>
+										 </div>
+										 <div class="col-md-4">
+										 </div>
+										 <form name="f1" novalidate>
+										 <div class="col-md-2">
+																Email<br/>
+															  <font color="black"><input type="text" name="txtemail" placeholder="Email" ng-model="ngmail" class="form-control"  autofocus/>
+															  </font>
+															  
+															 <input type="checkbox" disabled/>
+															  <a href="#"><font color="white">Keep me logged in</font></a>
+														  </div>
+														  <div class="col-md-2">
+															  Password<br/>
+															   <font color="black"><input type="password"  class="form-control" name="txtpswd" ng-model="ngpasswrd" placeholder="Password" size="20"/></font>
+															    <div ng-show="f1.$submitted || f1.txtpswd.$touched">
+												      <div ng-show="f1.txtpswd.$error.required"><font color="red">Please enter password</font></div>
+												    </div>
+												     <a href="#"><font color="white">Forgotten your Password?</font></a>
+														  </div>
+														  <div class="col-md-1">
+														  	<br/>
+															  <input type="submit" class="btn-primary" value="Login" ng-click="login()"/>
+														  </div>
+										</form>
+						  </div>
+						  <div class="setcolor">
+						  				<div class="col-md-1 setcolor"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+						  				<div class="col-md-6 setcolor">
+						  			  <font color="#000066"><h3>Facebook helps you connect and share with the</br>
+						  				people in your life.</h3></font><br/>
+						  				<img src="/Images/facebookmap1.jpg" length="800px" width="600px"/>
+						  				<br/><br/><br/>	<br/>
+						  				<div class="alert alert-success" ng-hide="accountCreated">
+  										<strong>Account Created !!! Please Login</strong>
+										</div>
+						  				 <div class="alert alert-danger" ng-hide="match">
+    									<strong> Email provided doesn't match !!</strong>
+  										</div>
+						  				<br/><br/></br><br/><br/></br><br/>
+						  				</div>
+						  				<div class="col-md-4 setcolor">
+						  				<div class="col-md-12">
+						  				<h1><b>Create an account</b></h1>
+						  				<h3> It's free and always will be</h3>
+						  				</div>
+						  				<form id="frmSignUp">
+						  				   <div class="col-md-6">
+										  <input type="text" name="txtfname" placeholder="First name"  ng-model="ngfname" class="form-control">
+										  </div>
+										   <div class="col-md-6">
+										  <input type="text" name="txtlname" placeholder="Surname"  ng-model="nglname" class="form-control"/><br/>
+										  </div>
+										  <div class="col-md-12">
+										  <input type="text" name="txtemail" placeholder="Email"  ng-model="ngemail" class="form-control"/><br/>
+										  <input type="text" name="txtemail1" placeholder="Re-enter email"  ng-model="ngemail1" class="form-control" /><br/>
+										  <input type="password" name="newpaswd" placeholder="New Password"  ng-model="ngnewpaswd" class="form-control" />
+										  <h3>Birthday</h3>
+						  				<select id="date" name="date" ng-model="ngdate" >
+										   <option value="invalidDate" >Day</option>
+										 <% for(var i=1;i<=31;i++)
+										 { %>
+										 <option value="<%= i%>"><%= i%></option>
+										 <%}%>
+										 </select>
+										  <select name="month" id="month" ng-model="ngmonth" >
+										  <option id="mhead" name="mhead" selected="selected" >Month</option>
+										 <option ng-repeat="m in months" value="{{ $index }}">{{ m }}</option>
+										 </select>
+										 <select id ="year" name ="year" ng-model="ngyear">
+										 <option  value="invalidYear" selected="true" >Year</option>
+										 <% for(var i=1905;i<=2015;i++)
+										 { %>
+										 <option value="<%= i%>"><%= i%></option>
+										 <%}%>
+										 </select><br/><br/>
+										 <input type="radio" name="gender" id="gender" value="female" ng-model="nggender"/>Female
+										 <input type="radio" name="gender" id="gender" value="male" ng-model="nggender"/>Male <br/></br/>
+										 </div>
+										 <div class="col-md-6">
+										 <button id="btncreate" class="btn btn-success form-control" ng-click="createUser()">Create an account</button>
+										 <br/></br><br/>
+										 </div>	<br/>	<br/></br><br/>
+										</form>			
+						  		</div>
+						  		<div class="col-md-1 setcolor"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></br><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+						  				
+						  </div>
+		  </div>	
+  </body>
+</html>

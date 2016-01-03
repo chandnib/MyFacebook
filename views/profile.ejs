@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home Page</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="angularjs/ui-bootstrap-tpls-0.13.4.js"></script>
+<script src="/angular/ProfileController.js"></script>
+</head>
+<body ng-app="myprofile" ng-controller="profileCtrl" ng-init="init()">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-1">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> <img length="30px"
+					height="30px" alt="Brand" src="/Images/fbbrand.jpg">
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<form id="f1" method="get" action="loadUserProfile">
+				<div class="row">
+					<br />
+					<div class="col-lg-12">
+						<div class="input-group">
+							<input type="text" class="form-control"
+								placeholder="Search Facebook"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+					<!-- /input-group -->
+				</div>
+				<br />
+			</form>
+		</div>
+		<!-- /.row -->
+	</div>
+	
+	<div class="row2">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		<br/><br/><br/>
+		<div class="well">
+			<img src="/Images/pic.jpg" length="150px" width="140px"/>
+			<button type="button" ng-click="changeStatus('<%= profile[0].fname %>',status)" class="btn btn-primary pull-right">{{ status }}</button>
+		</div>	
+		</div>
+		<div class="col-md-3">
+		<br/><br/><br/>
+		<div class="panel panel-default">
+		<table class="table table-hover">
+		  <div class="panel-heading"><h4>Profile</h4></div> 
+		  <center>
+		  <tr>
+		   <td>
+		 <span class="glyphicon glyphicon-user"></span>
+		  <%= profile[0].fname %>  <%= profile[0].lname %><br/>
+		 <span class="glyphicon glyphicon-earphone"></span>
+		  <%= profile[0].mobno %> <br/>
+		  <span class="glyphicon glyphicon-envelope"></span>
+		  <%= profile[0].email %><br/>
+		   <span class="glyphicon glyphicon-calendar"></span>
+		  <%= profile[0].dob %>
+		  </center>
+		  </td>
+		  </tr>
+		  </table>
+		  </div> 	
+		  </div>
+			<div class="col-md-5">
+			</div>
+</div>
+<div class="row3">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-4">
+		<br/><br/><br/>
+		<div class="panel panel-default">
+		  <div class="panel-heading"><h4>Work and Education</h4></div>  
+		  <table class="table table-hover">
+		 <% for(var i=0;i< profile[0].work_edu.length;i++)
+		 { %>
+		  <tr><td><%= profile[0].work_edu[i].title %> at <%= profile[0].work_edu[i].location %> from <%= profile[0].work_edu[i].from %> to <%= profile[0].work_edu[i].to %></td></tr> 
+		 <%}%>
+		  </table>
+		  </div>
+			</div>
+		<div class="col-md-4">
+		<br/>
+		<div class="panel panel-default">
+		  <div class="panel-heading"><h4>Life Events</h4></div>
+		  <table class="table table-hover">
+		 <% for(var i=0;i< profile[0].life_events.length;i++)
+		 { %>
+		 <tr><td>Got <%= profile[0].life_events[i].title %> on <%= profile[0].life_events[i].when %></td></tr>
+		 <%}%>	  
+		  </table>
+		  </div>
+			</div>
+		<div class="col-md-2">
+		</div>
+</div> 
+</body>
+</html>

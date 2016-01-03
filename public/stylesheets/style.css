@@ -1,0 +1,79 @@
+body {
+  //padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:#D2CEF0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.logo {
+  display:block;
+  padding:3px;
+  background-color:#fff;
+  color:#3B5999;
+  height:28px;
+  width:28px;
+  margin:9px;
+  margin-right:2px;
+  margin-left:15px;
+  font-size:20px;
+  font-weight:700;
+  text-align:center;
+  text-decoration:none;
+  text-shadow:0 0 1px;
+  border-radius:2px;
+   height:25px;
+    width:25px;
+}
+
+.panel-heading {
+  background-color:#f9fafb;
+  color:#555555;
+}
+
+
+.test{
+    height:35px;
+    width:35px;
+}
+
+.row {
+    color: #FFFFFF;
+    background-color: #3B5999;
+}
+
+.main{
+  background-color: #bd9d9d;
+}
+
+.btn-primary{
+background-color:#3B5999;
+    color:#fffffe
+ }
+
+.form-control {
+	
+}
+
+.nav {
+   font-family:Arial,sans-serif;
+   font-size:13px;
+}
+
+.navbar-blue {
+    border-width:0;
+	background-color:#3B5999;
+    color:#ffffff;
+    font-family:arial,sans-serif;
+    top:0;
+    position:fixed;
+    width:inherit;
+}
+
+.setcolor{
+	background-color:#F8F8F8;
+}
+
+

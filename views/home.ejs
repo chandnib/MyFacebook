@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="angularjs/ui-bootstrap-tpls-0.13.4.js"></script>
+<script src="/angular/HomeController.js"></script>
+</head>
+<body ng-app="myhome" ng-controller="homeCtrl" 
+   ng-init="funcinit('<%= feeds %>','<%= fname %>','<%= lname %>')">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-1">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/home"> <img length="30px" height="30px" alt="Brand" src="/Images/fbbrand.jpg">
+						</a>
+				</div>
+		</div>
+		<div class="col-md-3">
+			<form id="f1" method="get" action="loadUserProfile">
+				<div class="row">
+					<br />
+					<div class="col-lg-12">
+						<div class="input-group">
+							<input type="text" class="form-control" name="txtsearch"
+								placeholder="Search Facebook"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="submit" name="btnsearch">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+					<!-- /input-group -->
+				</div><br/>
+			</form>
+		</div>
+		<!-- /.row -->
+
+
+
+		<div class="col-md-2"></div>
+		<div class="col-md-1">
+			<br /> <a href="#"><font color="white"><span
+					class="glyphicon glyphicon-home"></span><b> Home</b></font></a>
+		</div>
+		<div class="col-md-1">
+			<br /> <a href="/signout"><font color="white"><span
+					class="glyphicon glyphicon-log-out"></span><b> Sign Out</b></font></a>
+		</div>
+		<div class="col-md-1 dropdown">
+			<br />
+			<button class="btn btn-primary dropdown-toggle" type="button"
+				id="menu1" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-user"></span>
+				<span ng-if="reqlist.length != 0">
+				<span class="badge">{{reqlist.length}}</span></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+				<li ng-repeat="r in reqlist"><a role="menuitem"
+		tabindex="-1" href="#" >{{ r.userid }}</a><button type="button" ng-click="acceptReq(r.userid)" class="btn btn-primary">Confirm</button></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row2">
+		<div class="col-md-3">
+			<div class="panel-body">
+				<div class="list-group">
+					<a href="/loadUserProfile?txtsearch={{ fname }}&btnsearch=" class="list-group-item"><span
+						class="glyphicon glyphicon-user "></span> {{ fname }} {{ lname }}</a> <a
+						href="/editProfile" class="list-group-item"><span
+						class="glyphicon glyphicon-pencil"></span> Edit Profile</a> <a
+						href="#" class="list-group-item"><span
+						class="glyphicon glyphicon-globe"></span> Newsfeeds</a> <a href="/groups"
+						class="list-group-item"><span class="glyphicon glyphicon-th"></span>
+						Groups</a> <a href="#" class="list-group-item"><span
+						class="glyphicon glyphicon-envelope"></span> Messages</a> <a href="#"
+						class="list-group-item"><span
+						class="glyphicon glyphicon-calendar"></span> Events</a> <a href="#"
+						class="list-group-item"><span
+						class="glyphicon glyphicon-heart-empty"></span> Friends</a> <a
+						href="#" class="list-group-item"><span
+						class="glyphicon glyphicon-thumbs-up"></span> Likes</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<br />
+			<div class="well">
+				<form id="f1" class="form-horizontal" role="form">
+					<div class="form-group" style="padding: 14px;">
+						<textarea id="txtpost" ng-model="ngpost" class="form-control"
+							placeholder="What's on your mind?" required></textarea>
+					</div>
+					<button ng-click="addPost()" class="btn btn-primary pull-right"
+						type="button">Post</button>
+					<ul class="list-inline">
+						<li><a href=""></a></li>
+						<li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+						<li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+					</ul>
+				</form>
+			</div>
+			<br />
+			<div>
+				<h3>Newsfeeds</h3><br/>
+				<div class="well">
+				<table>
+					<span ng-if="newsfeeds != null" >
+						<tr ng-repeat="f in newsfeeds| orderBy:'-timestamp'">
+							<td><h4><b><i>{{ f.userid }}</i></b></h4> {{ f.feed }}</td>						
+						</tr>
+						
+					</span>
+				</table>
+				</div>
+			</div>
+		</div>
+ 	
+	</div>
+</body>
